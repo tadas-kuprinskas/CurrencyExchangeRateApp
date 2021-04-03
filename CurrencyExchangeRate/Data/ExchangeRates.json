@@ -1,0 +1,37 @@
+﻿[
+  {
+    "currency": "Euro",
+    "iso": "EUR",
+    "amount": 743.94
+  },
+  {
+    "currency": "Amerikanske dollar",
+    "iso": "USD",
+    "amount": 663.11
+  },
+  {
+    "currency": "Britiske pund",
+    "iso": "GBP",
+    "amount": 825.85
+  },
+  {
+    "currency": "Svenske kroner",
+    "iso": "SEK",
+    "amount": 76.10
+  },
+  {
+    "currency": "Norske kroner",
+    "iso": "NOK",
+    "amount": 78.40
+  },
+  {
+    "currency": "Schweiziske franc",
+    "iso": "CHF",
+    "amount": 683.58
+  },
+  {
+    "currency": "Japanske yen",
+    "iso": "JPY",
+    "amount": 5.9740
+  }
+]
