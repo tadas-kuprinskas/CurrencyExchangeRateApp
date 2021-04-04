@@ -13,7 +13,7 @@ namespace CurrencyExchangeRatesTest
        
         [Theory]
         [InlineData("EUR/SEK", "8")]     
-        public void ParseInput_GivenBothInputs_ReturnSuccessfulParse(string currencyPair, string amount)
+        public void ParseExchangeInput_GivenBothInputs_ReturnSuccessfulParse(string currencyPair, string amount)
         {
             var fileService = new FileService();
             var exchangeRates = fileService.GetExchangeRatesFromFile();

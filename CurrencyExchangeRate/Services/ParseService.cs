@@ -20,9 +20,9 @@ namespace CurrencyExchangeRate.AppRunner.Services
         public ExchangeInput ParseExchangeInput(string[] input)
         {
             var amount = int.Parse(input[1]);
-            var isosSplitArray = input[0].Split('/');
-            var isoExchangeFrom = isosSplitArray[0];
-            var isoExchangeTo = isosSplitArray[1];
+            var splitArrayIsos = input[0].Split('/');
+            var isoExchangeFrom = splitArrayIsos[0];
+            var isoExchangeTo = splitArrayIsos[1];
             var currencyExchangeFrom = _exchangeRates.Where(c => c.ISO == isoExchangeFrom).FirstOrDefault();           
             var currencyExchangeTo = _exchangeRates.Where(c => c.ISO == isoExchangeTo).FirstOrDefault();
 
