@@ -12,21 +12,20 @@ namespace CurrencyExchangeRatesTest
     {
        
         [Theory]
-        [InlineData("EUR/DKK", "8")]
-        [InlineData("USD/NOK", "4")]
-        [InlineData("SEK/USD", "7")]
+        [InlineData("EUR/SEK", "8")]     
         public void ParseInput_GivenBothInputs_ReturnSuccessfulParse(string currencyPair, string amount)
         {
-            var exchangeRate = new List<ExchangeRate>();
-            var parseService = new ParseService(exchangeRate);
+            var fileService = new FileService();
+            var exchangeRates = fileService.GetExchangeRatesFromFile();
+            
+            var parseService = new ParseService(exchangeRates);
             string[] inputArray = { currencyPair, amount };
-            var currencyFrom = inputArray[0].Split('/').FirstOrDefault();
-            var currencyTo = inputArray[0].Split('/').Last();
+            
             var parsedExchangeInput = parseService.ParseExchangeInput(inputArray);
 
-            parsedExchangeInput.Amount.Should().Be(int.Parse(amount));
-            parsedExchangeInput.CurrencyExchangeFrom.Should().Be(currencyFrom);
-            parsedExchangeInput.CurrencyExchangeTo.Should().Be(currencyTo);
+            parsedExchangeInput.Amount.Should().Be(8);
+            parsedExchangeInput.CurrencyExchangeFrom.ISO.Should().Be("EUR");
+            parsedExchangeInput.CurrencyExchangeTo.ISO.Should().Be("SEK");
         }
     }
 }
