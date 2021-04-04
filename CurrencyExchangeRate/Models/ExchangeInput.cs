@@ -8,8 +8,8 @@ namespace CurrencyExchangeRate.AppRunner.Models
 {
     public class ExchangeInput
     {
-        public string CurrencyExchangeFrom { get; set; }
-        public string CurrencyExchangeTo { get; set; }
+        public ExchangeRate CurrencyExchangeFrom { get; set; }
+        public ExchangeRate CurrencyExchangeTo { get; set; }
         public int Amount { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CurrencyExchangeRate.AppRunner.Models;
+﻿using CurrencyExchangeRate.AppRunner.Interfaces;
+using CurrencyExchangeRate.AppRunner.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CurrencyExchangeRate.AppRunner.Services
 {
-    public class FileService
+    public class FileService : IFileService
     {
         public IEnumerable<ExchangeRate> GetExchangeRatesFromFile()
         {
