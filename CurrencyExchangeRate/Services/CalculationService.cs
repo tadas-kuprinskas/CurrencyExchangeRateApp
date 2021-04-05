@@ -9,16 +9,12 @@ namespace CurrencyExchangeRate.AppRunner.Services
 {
     public class CalculationService
     {
-        private readonly FileService _fileService;
-
-        public CalculationService(FileService fileService)
+        public decimal CalculateExchangeAmount(ExchangeInput input)
         {
-            _fileService = fileService;
-        }
+            var calculatedResult = input.CurrencyExchangeFrom.Amount / input.CurrencyExchangeTo.Amount
+                * input.Amount;
 
-        //public decimal CalculateExchangeAmount(ExchangeInput input)
-        //{
-            
-        //}
+            return calculatedResult;
+        }
     }
 }
