@@ -11,7 +11,7 @@ namespace CurrencyExchangeRate.AppRunner.Services
     public class ParseService : IParseService
     {
         private readonly IEnumerable<ExchangeRate> _exchangeRates;
-
+      
         public ParseService(IEnumerable<ExchangeRate> exchangeRates)
         {
             _exchangeRates = exchangeRates;
@@ -23,8 +23,8 @@ namespace CurrencyExchangeRate.AppRunner.Services
             var splitArrayIsos = input[0].Split('/');
             var isoExchangeFrom = splitArrayIsos[0];
             var isoExchangeTo = splitArrayIsos[1];
-            var currencyExchangeFrom = _exchangeRates.Where(c => c.ISO == isoExchangeFrom).FirstOrDefault();           
-            var currencyExchangeTo = _exchangeRates.Where(c => c.ISO == isoExchangeTo).FirstOrDefault();
+            var currencyExchangeFrom = _exchangeRates.FirstOrDefault(c => c.ISO == isoExchangeFrom);           
+            var currencyExchangeTo = _exchangeRates.FirstOrDefault(c => c.ISO == isoExchangeTo);
 
             return new ExchangeInput()
             {

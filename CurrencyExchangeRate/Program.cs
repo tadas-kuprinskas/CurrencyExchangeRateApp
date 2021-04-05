@@ -12,12 +12,12 @@ namespace CurrencyExchangeRate
 
         static void Main(string[] args)
         {
-            RegisterServices();
-            //var fileService = new FileService();
-            //var result = fileService.GetExchangeRatesFromFile();
-            //IServiceScope scope = _serviceProvider.CreateScope();
-            //scope.ServiceProvider.GetRequiredService<ConsoleApplication>().Run();
-
+            RegisterServices();           
+            IServiceScope scope = _serviceProvider.CreateScope();
+            Console.Write("Exchange: ");
+            var input = UserInputService.GetUserInputArray();
+            var result = scope.ServiceProvider.GetRequiredService<ConsoleApplicationService>().Run(input);
+            Console.WriteLine(result);
             DisposeServices();
         }
 
@@ -25,7 +25,9 @@ namespace CurrencyExchangeRate
         {
             var services = new ServiceCollection();
             services.AddSingleton<IFileService, FileService>();
-            //services.AddSingleton<ConsoleApplication>();
+            services.AddSingleton<IParseService, ParseService>();
+            services.AddSingleton<ICalculationService, CalculationService>();
+            services.AddSingleton<ConsoleApplicationService>();
 
             _serviceProvider = services.BuildServiceProvider();
         }
