@@ -30,7 +30,6 @@ namespace CurrencyExchangeRate.App.Tests
             var calculatedRate = calculationService.CalculateExchangeAmount(exchangeInput);
             var result = amountFrom / amountTo * exchangeInput.Amount;
             calculatedRate.Should().Be(result);
-
         }
     }
 }

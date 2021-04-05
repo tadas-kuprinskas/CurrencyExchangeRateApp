@@ -33,5 +33,10 @@
     "currency": "Japanske yen",
     "iso": "JPY",
     "amount": 5.9740
+  },
+  {
+    "currency": "Danish kroner",
+    "iso": "DKK",
+    "amount": 100
   }
 ]
