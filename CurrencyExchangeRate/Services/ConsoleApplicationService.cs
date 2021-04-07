@@ -14,24 +14,35 @@ namespace CurrencyExchangeRate.AppRunner.Services
         private readonly IParseService _parseService;
         private readonly IUserInputService _userInputService;
         private readonly IPrint _printService;
+        private readonly ValidationService _validationService;
 
         public ConsoleApplicationService(ICalculationService calculationService, IFileService fileService,
             IUserInputService userInputService, IPrint printService)
         {
-            var currencies = fileService.GetExchangeRatesFromFile();
-            _parseService = new ParseService(currencies);
+            var exchangeRates = fileService.GetExchangeRatesFromFile();
+            _parseService = new ParseService(exchangeRates);
             _calculationService = calculationService;
             _userInputService = userInputService;
             _printService = printService;
+            _validationService = new ValidationService(exchangeRates);
         }
 
         public void Run()
         {
-            _printService.PrintMessage($"{Message.usageMessage}\n{Message.startMessage} ");
-            var input = _userInputService.GetUserInputArray();
-            var parseExchangeInput = _parseService.ParseExchangeInput(input);
-            var result = _calculationService.CalculateExchangeAmount(parseExchangeInput).ToString();
-            _printService.PrintMessage(result);
+            try
+            {
+                _printService.PrintMessage($"{Message.usageMessage}\n{Message.startMessage} ");
+                var input = _userInputService.GetUserInputArray();
+                _validationService.Validate(input);
+                var parseExchangeInput = _parseService.ParseExchangeInput(input);
+                var result = _calculationService.CalculateExchangeAmount(parseExchangeInput).ToString();
+                _printService.PrintMessage(result);
+            }
+            catch (Exception ex)
+            {
+
+                _printService.PrintMessage(ex.Message);
+            }
         }
     }
 }

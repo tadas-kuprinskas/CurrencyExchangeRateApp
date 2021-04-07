@@ -21,8 +21,8 @@ namespace CurrencyExchangeRate.AppRunner.Services
         {
             var amount = int.Parse(input[1]);
             var splitArrayIsos = input[0].Split('/');
-            var isoExchangeFrom = splitArrayIsos[0];
-            var isoExchangeTo = splitArrayIsos[1];
+            var isoExchangeFrom = splitArrayIsos[0].ToUpper();
+            var isoExchangeTo = splitArrayIsos[1].ToUpper();
             var currencyExchangeFrom = _exchangeRates.Where(c => c.ISO == isoExchangeFrom).FirstOrDefault();           
             var currencyExchangeTo = _exchangeRates.Where(c => c.ISO == isoExchangeTo).FirstOrDefault();
 

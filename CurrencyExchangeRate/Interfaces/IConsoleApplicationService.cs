@@ -1,4 +1,4 @@
-﻿namespace CurrencyExchangeRate.AppRunner.Services
+﻿namespace CurrencyExchangeRate.AppRunner.Interfaces
 {
     public interface IConsoleApplicationService
     {

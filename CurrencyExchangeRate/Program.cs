@@ -14,7 +14,7 @@ namespace CurrencyExchangeRate
         {
             RegisterServices();           
             IServiceScope scope = _serviceProvider.CreateScope();
-            scope.ServiceProvider.GetRequiredService<ConsoleApplicationService>().Run();
+            scope.ServiceProvider.GetRequiredService<IConsoleApplicationService>().Run();
             DisposeServices();
         }
 
@@ -23,8 +23,9 @@ namespace CurrencyExchangeRate
             var services = new ServiceCollection();
             services.AddSingleton<IFileService, FileService>();
             services.AddSingleton<IPrint, ConsolePrintService>();
+            services.AddSingleton<IConsoleApplicationService, ConsoleApplicationService>();
             services.AddSingleton<IParseService, ParseService>();
-            services.AddSingleton<IUserInputService, ConsoleInputService>();
+            services.AddSingleton<IUserInputService, ConsoleReadService>();
             services.AddSingleton<ICalculationService, CalculationService>();
             services.AddSingleton<ConsoleApplicationService>();
 

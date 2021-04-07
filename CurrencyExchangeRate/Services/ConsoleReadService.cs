@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 
 namespace CurrencyExchangeRate.AppRunner.Services
 {
-    public class ConsoleInputService : IUserInputService
+    public class ConsoleReadService : IUserInputService
     {
         public string[] GetUserInputArray()
         {
-            return Console.ReadLine().Split(" ");                      
+            return Console.ReadLine().Split(" ");
+        }
+
+        public void ReadMessage()
+        {
+            Console.ReadLine();
         }
     }
 }
