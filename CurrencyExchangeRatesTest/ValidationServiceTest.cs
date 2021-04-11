@@ -12,7 +12,7 @@ using Xunit;
 
 namespace CurrencyExchangeRate.App.Tests
 {
-    public class ValidationServiceTests
+    public class ValidationServiceTest
     {
         [Theory]
         [InlineData("SEQ/NOK", "8")]

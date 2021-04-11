@@ -30,7 +30,7 @@ namespace CurrencyExchangeRate.AppRunner.Services
         public void Run()
         {
             try
-            {
+            {             
                 _printService.PrintMessage($"{Message.usageMessage}\n{Message.startMessage} ");
                 var input = _userInputService.GetUserInputArray();
                 _validationService.Validate(input);

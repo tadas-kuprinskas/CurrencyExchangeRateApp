@@ -42,7 +42,7 @@ namespace CurrencyExchangeRate.AppRunner.Services
             }
             catch (ArgumentException ex)
             {               
-                    throw new ArgumentException(ex.Message); 
+                throw new ArgumentException(ex.Message); 
             }
             catch (Exception)
             {
